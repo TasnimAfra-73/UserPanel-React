@@ -10,7 +10,7 @@ function App() {
     <div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Searchbar />
-        <Button variant="contained" color="primary">
+        <Button style= {{backgroundColor: "green"}}>
           Add New
         </Button>
       </div>

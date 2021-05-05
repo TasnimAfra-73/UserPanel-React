@@ -16,8 +16,8 @@ export default function SearchBar() {
   const classes = useStyles();
 
   return (
-    <div style = {{display: "flex"}}>
-      <Button variant="contained" color="primary">Search</Button>
+    <div style = {{display: "flex" }}>
+      <Button style={{ backgroundColor: "green" }}>Search</Button>
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
           id="outlined-basic"
