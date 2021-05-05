@@ -19,11 +19,7 @@ export default function SearchBar() {
     <div style = {{display: "flex" }}>
       <Button style={{ backgroundColor: "green" }}>Search</Button>
       <form className={classes.root} noValidate autoComplete="off">
-        <TextField
-          id="outlined-basic"
-          label="Enter user name or email"
-          variant="outlined"
-        />
+      <TextField id="outlined-search" label="Enter user name or email" type="search" variant="outlined" />
       </form>
     </div>
   );
