@@ -1,7 +1,20 @@
+import React from "react";
+import Button from "@material-ui/core/Button";
+import Searchbar from "./components/SearchBar";
+import UserTable from "./components/userTable";
+// import SearchBar from "material-ui-search-bar";
+
+// import searchBar from '../src'
 function App() {
   return (
-    <div >
-      User Panel
+    <div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Searchbar />
+        <Button variant="contained" color="primary">
+          Add New
+        </Button>
+      </div>
+      <UserTable/>
     </div>
   );
 }
