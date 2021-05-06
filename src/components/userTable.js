@@ -1,6 +1,11 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import { DataGrid } from "@material-ui/data-grid";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import EditForm from "./EditForm";
+
+
 const columns = [
   { field: "id", headerName: "ID", width: 60, sortable: false },
   { field: "firstName", headerName: "First name", width: 300, sortable: false },
@@ -19,11 +24,60 @@ const columns = [
     renderCell: (params) => {
       const onClick = () => {};
 
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const [open, setOpen] = useState(false);
+
+      const useStyles = makeStyles((theme) => ({
+        paper: {
+          position: "absolute",
+          width: 400,
+          backgroundColor: theme.palette.background.paper,
+          border: "2px solid #000",
+          boxShadow: theme.shadows[5],
+          padding: theme.spacing(2, 4, 3),
+        },
+        modal: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        },
+      }));
+    
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const classes = useStyles();
+    
+      const handleOpen = () => {
+        setOpen(true);
+      };
+    
+      const handleClose = () => {
+        setOpen(false);
+      };
+
       return (
-        <div>
-          <Button style={{ backgroundColor: "green" }} onClick={onClick}>
+        <div style={{ display: "flex" }}>
+          <Button style={{ backgroundColor: "green" }} onClick={handleOpen}>
             Edit
           </Button>
+          <Modal
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+        >
+          <div className={classes.paper}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <h2>Update User</h2>
+              <a href="" style={{ justifyContent: "space-between" }}>
+                x
+              </a>
+            </div>
+            <div style={{ display: "flex" }}>
+              <EditForm/>
+            </div>
+          </div>
+        </Modal>
           <Button style={{ backgroundColor: "red" }} onClick={onClick}>
             Delete
           </Button>
