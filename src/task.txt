@@ -1,0 +1,14 @@
+In this task, you will be analyzing react and making a list by using React where you will
+be able to add a new item, update item, delete item and filter the list by searching. The
+list should be paginated.  
+ 
+Task:
+1. Display items in UI
+2. Create an item
+3. Update an item
+4. Delete an item
+5. Implement search option to filter the list
+6. Implement pagination
+7. Use modal to create and update the item 
+
+N.B: You can use any kind of CSS frameworks and you have to use React’s hooks api.
