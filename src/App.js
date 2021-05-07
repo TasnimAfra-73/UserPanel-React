@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import Searchbar from "./components/SearchBar";
 import UserTable from "./components/userTable";
@@ -7,7 +7,21 @@ import Modal from "@material-ui/core/Modal";
 import AddForm from "./components/AddForm";
 
 function App() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [users, setUsers] = useState([]);
+
+  const getUsers = () => {
+    let tempUsers = JSON.parse(localStorage.getItem("users"));
+    if (!tempUsers) {
+      localStorage.setItem("users", JSON.stringify([]));
+      tempUsers = JSON.parse(localStorage.getItem("users"));
+    }
+    setUsers(tempUsers);
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
 
   const useStyles = makeStyles((theme) => ({
     paper: {
@@ -56,12 +70,12 @@ function App() {
               </a>
             </div>
             <div style={{ display: "flex" }}>
-              <AddForm/>
+              <AddForm users={users} setUsers={setUsers} />
             </div>
           </div>
         </Modal>
       </div>
-      <UserTable />
+      <UserTable users={users} />
     </div>
   );
 }

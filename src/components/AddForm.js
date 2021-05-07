@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 
-export default function AddForm() {
+export default function AddForm({users,setUsers}) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();    
-    let users = JSON.parse(localStorage.getItem("users"));
-    if(!users){
-        localStorage.setItem("users", JSON.stringify([]));
-        users = JSON.parse(localStorage.getItem("users"));
-    }
-
-    let userObject = { firstName: firstName, lastName: lastName, email: email };
-    users.push(userObject);
-    localStorage.setItem("users", JSON.stringify(users));
+    let tempUsers = [...users];
+    let userObject = { id:users.length + 1, lastName: lastName, firstName: firstName,  email: email };
+    tempUsers.push(userObject);
+    localStorage.setItem("users", JSON.stringify(tempUsers));
+    setUsers(tempUsers);
     event.target.reset();
   };
 

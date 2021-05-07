@@ -117,11 +117,11 @@ const rows = [
   },
 ];
 
-export default function DataTable() {
+export default function DataTable({users}) {
   return (
     <div style={{ height: 275, width: "100%" }}>
       <DataGrid
-        rows={rows}
+        rows={users}
         columns={columns}
         pageSize={3}
         page={0}
