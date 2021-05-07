@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import Searchbar from "./components/SearchBar";
-import UserTable from "./components/UserTable";
+import UserTable from "./components/userTable";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import AddForm from "./components/AddForm";
