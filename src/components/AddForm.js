@@ -6,10 +6,13 @@ export default function AddForm({users,setUsers}) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();    
+  const handleSubmit = ( event) => {
+    event.preventDefault(); 
+    console.log(event);   
+    // console.log(params);
+
     let tempUsers = [...users];
-    let userObject = { id:users.length + 1, lastName: lastName, firstName: firstName,  email: email };
+    let userObject = { id: users.length + 1, lastName: lastName, firstName: firstName,  email: email };
     tempUsers.push(userObject);
     localStorage.setItem("users", JSON.stringify(tempUsers));
     setUsers(tempUsers);
@@ -57,7 +60,7 @@ export default function AddForm({users,setUsers}) {
         />
       </div>
       <div style={{ display: "flex", alignItems: "end" }}>
-        <button style={{ backgroundColor: "green" }} type="submit">
+        <button style={{ backgroundColor: "green" }} type="submit" >
           Save
         </button>
         <button style={{ backgroundColor: "red" }}>Close</button>

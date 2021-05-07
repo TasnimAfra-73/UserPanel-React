@@ -10,18 +10,18 @@ function App() {
   const [open, setOpen] = useState(false);
   const [users, setUsers] = useState([]);
 
-  const getUsers = () => {
-    let tempUsers = JSON.parse(localStorage.getItem("users"));
-    if (!tempUsers) {
-      localStorage.setItem("users", JSON.stringify([]));
-      tempUsers = JSON.parse(localStorage.getItem("users"));
-    }
-    setUsers(tempUsers);
-  };
+ const getUsers = ()=>{
+   let tempUsers = JSON.parse(localStorage.getItem("users"))
+   if(!tempUsers){
+    localStorage.setItem("users", JSON.stringify([]));
+    tempUsers = JSON.parse(localStorage.getItem("users"));
+   }
+   setUsers(tempUsers);
+ }
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+ useEffect(()=>{
+   getUsers();
+ }, []);
 
   const useStyles = makeStyles((theme) => ({
     paper: {
@@ -65,17 +65,22 @@ function App() {
           <div className={classes.paper}>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h2>Add User</h2>
-              <a href="" style={{ justifyContent: "space-between" }}>
+              {/* <a href="" style={{ justifyContent: "space-between" }}>
                 x
-              </a>
+              </a> */}
             </div>
             <div style={{ display: "flex" }}>
-              <AddForm users={users} setUsers={setUsers} />
+              <AddForm
+              users = {users}
+              setUsers = {setUsers}
+              />
             </div>
           </div>
         </Modal>
       </div>
-      <UserTable users={users} />
+      <UserTable 
+      users ={users}
+      setUsers ={setUsers}/>
     </div>
   );
 }
