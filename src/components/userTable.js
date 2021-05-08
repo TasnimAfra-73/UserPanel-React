@@ -5,11 +5,24 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import EditForm from "./EditForm";
 
-export default function DataTable({ users,setUsers }) {
-
+export default function DataTable({ users, setUsers }) {
+  console.log(users);
   const columns = [
-    { field: "id", headerName: "ID", width: 60, sortable: false },
-    { field: "firstName", headerName: "First name", width: 300, sortable: false },
+    {
+      field: "id",
+      headerName: "ID",
+      width: 60,
+      sortable: false,
+      valueGetter: (params) => {
+        return params.rowIndex + 1;
+      },
+    },
+    {
+      field: "firstName",
+      headerName: "First name",
+      width: 300,
+      sortable: false,
+    },
     { field: "lastName", headerName: "Last name", width: 300, sortable: false },
     {
       field: "email",
@@ -22,10 +35,10 @@ export default function DataTable({ users,setUsers }) {
       headerName: "Action",
       sortable: false,
       width: 180,
-      renderCell: (params) => {  
+      renderCell: (params) => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const [open, setOpen] = useState(false);
-  
+
         const useStyles = makeStyles((theme) => ({
           paper: {
             position: "absolute",
@@ -41,29 +54,28 @@ export default function DataTable({ users,setUsers }) {
             justifyContent: "center",
           },
         }));
-  
+
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const classes = useStyles();
-  
+
         const handleOpen = () => {
           setOpen(true);
         };
-  
+
         const handleClose = () => {
           setOpen(false);
         };
-  
+
         const deleteUser = () => {
-          let tempUsers = [...users]
+          let tempUsers = [...users];
           var currentIndex = params.rowIndex;
           if (currentIndex > -1) {
             tempUsers.splice(currentIndex, 1);
           }
           localStorage.setItem("users", JSON.stringify(tempUsers));
           setUsers(tempUsers);
-
         };
-  
+
         return (
           <div style={{ display: "flex" }}>
             <Button style={{ backgroundColor: "green" }} onClick={handleOpen}>
@@ -77,14 +89,17 @@ export default function DataTable({ users,setUsers }) {
               aria-describedby="simple-modal-description"
             >
               <div className={classes.paper}>
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
                   <h2>Update User</h2>
-                  {/* <a href="" style={{ justifyContent: "space-between" }}>
-                    x
-                  </a> */}
                 </div>
                 <div style={{ display: "flex" }}>
-                  <EditForm />
+                  <EditForm 
+                  params ={params}
+                  users = {users}
+                  setUsers ={setUsers}
+                  handleClose={handleClose}/>
                 </div>
               </div>
             </Modal>
@@ -102,7 +117,7 @@ export default function DataTable({ users,setUsers }) {
       <DataGrid
         rows={users}
         columns={columns}
-        pageSize={3}
+        pageSize={5}
         page={0}
         disableColumnMenu
       />
