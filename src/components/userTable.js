@@ -72,6 +72,9 @@ export default function DataTable({ users, setUsers }) {
           if (currentIndex > -1) {
             tempUsers.splice(currentIndex, 1);
           }
+          tempUsers.forEach((element) => {
+            element.id = tempUsers.indexOf(element) + 1;
+          });
           localStorage.setItem("users", JSON.stringify(tempUsers));
           setUsers(tempUsers);
         };
@@ -95,11 +98,12 @@ export default function DataTable({ users, setUsers }) {
                   <h2>Update User</h2>
                 </div>
                 <div style={{ display: "flex" }}>
-                  <EditForm 
-                  params ={params}
-                  users = {users}
-                  setUsers ={setUsers}
-                  handleClose={handleClose}/>
+                  <EditForm
+                    params={params}
+                    users={users}
+                    setUsers={setUsers}
+                    handleClose={handleClose}
+                  />
                 </div>
               </div>
             </Modal>
