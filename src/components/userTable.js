@@ -6,7 +6,6 @@ import Modal from "@material-ui/core/Modal";
 import EditForm from "./EditForm";
 
 export default function DataTable({ users, setUsers}) {
-  console.log(users);
   const columns = [
     {
       field: "id",

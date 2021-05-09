@@ -18,7 +18,6 @@ export default function SearchBar({ users, setUsers }) {
 
   const getUsers = () => {
     let tempUsers = JSON.parse(localStorage.getItem("users"));
-    console.log("get users called");
     if (!tempUsers) {
       localStorage.setItem("users", JSON.stringify([]));
       tempUsers = JSON.parse(localStorage.getItem("users"));
@@ -44,7 +43,6 @@ export default function SearchBar({ users, setUsers }) {
       ) {
         tempUsers.push(element);
         setUsers(tempUsers);
-        console.log(users);
       }
     });
   };
