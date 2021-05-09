@@ -51,7 +51,7 @@ function App() {
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Searchbar users={users} setUsers={setUsers} getUsers={getUsers} />
+        <Searchbar users={users} setUsers={setUsers} />
         <Button style={{ backgroundColor: "green" }} onClick={handleOpen}>
           Add New
         </Button>
