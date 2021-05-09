@@ -57,6 +57,7 @@ export default function SearchBar({ users, setUsers }) {
         onSubmit={handleSubmit}
       >
         <TextField
+          size="small"
           id="outlined-search"
           label="Search by user name or email"
           type="search"

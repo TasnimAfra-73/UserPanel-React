@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 
-export default function EditForm({params, users, setUsers, handleClose}) {
+export default function EditForm({ params, users, setUsers, handleClose }) {
   const [newFirstName, setNewFirstName] = useState("");
   const [newLastName, setNewLastName] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -18,9 +18,11 @@ export default function EditForm({params, users, setUsers, handleClose}) {
   };
   return (
     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <label>First Name</label>
+      <div className="inputSpace">
+        <label className="labelSpace"> First Name</label>
         <TextField
+          style={{ marginTop: "5px" }}
+          className="formInput"
           id="outlined-search"
           label="Enter first name"
           type="search"
@@ -30,10 +32,11 @@ export default function EditForm({params, users, setUsers, handleClose}) {
           }}
         />
       </div>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <label>Last Name</label>
-
+      <div className="inputSpace">
+        <label className="labelSpace">Last Name</label>
         <TextField
+          style={{ marginTop: "5px" }}
+          className="formInput"
           id="outlined-search"
           label="Enter last name"
           type="search"
@@ -43,10 +46,11 @@ export default function EditForm({params, users, setUsers, handleClose}) {
           }}
         />
       </div>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <label>E-mail</label>
-
+      <div className="inputSpace">
+        <label className="labelSpace">E-mail</label>
         <TextField
+          style={{ marginTop: "5px" }}
+          className="formInput"
           id="outlined-search"
           label="Enter email"
           type="search"
@@ -56,8 +60,11 @@ export default function EditForm({params, users, setUsers, handleClose}) {
           }}
         />
       </div>
-      <div style={{ display: "flex", alignItems: "end" }}>
-        <button style={{ backgroundColor: "green" }} type="submit">
+      <div className="formBtnPos">
+        <button
+          style={{ backgroundColor: "green", marginRight: "5px" }}
+          type="submit"
+        >
           Update
         </button>
         <button style={{ backgroundColor: "red" }} onClick={handleClose}>

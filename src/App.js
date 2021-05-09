@@ -5,6 +5,8 @@ import UserTable from "./components/userTable";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import AddForm from "./components/AddForm";
+import "./App.css";
+import "./index.css";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -23,15 +25,7 @@ function App() {
     getUsers();
   }, []);
 
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      position: "absolute",
-      width: 400,
-      backgroundColor: theme.palette.background.paper,
-      border: "2px solid #000",
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
+  const useStyles = makeStyles(() => ({
     modal: {
       display: "flex",
       alignItems: "center",
@@ -50,7 +44,7 @@ function App() {
   };
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div className="searchBarDiv">
         <Searchbar users={users} setUsers={setUsers} />
         <Button style={{ backgroundColor: "green" }} onClick={handleOpen}>
           Add New
@@ -62,11 +56,11 @@ function App() {
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
         >
-          <div className={classes.paper}>
+          <div className= "paper">
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h2>Add User</h2>
             </div>
-            <div style={{ display: "flex" }}>
+            <div style={{padding:"10px"}}>
               <AddForm
                 users={users}
                 setUsers={setUsers}

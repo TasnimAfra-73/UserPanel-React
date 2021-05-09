@@ -1,0 +1,49 @@
+.formInput {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.fontChange {
+  margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.formBtnPos {
+  display: flex;
+  justify-content: flex-end;
+  height: 40px;
+  margin-top: 10px;
+}
+
+.inputSpace {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.labelSpace {
+  margin-bottom: 10px;
+}
+
+.searchBarDiv {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.paper {
+  position: "absolute";
+  width: 400;
+  background-color: white;
+  border: "2px solid #000";
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 10px;
+}
+
+.modal {
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+}

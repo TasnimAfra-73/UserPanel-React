@@ -38,15 +38,7 @@ export default function DataTable({ users, setUsers}) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const [open, setOpen] = useState(false);
 
-        const useStyles = makeStyles((theme) => ({
-          paper: {
-            position: "absolute",
-            width: 400,
-            backgroundColor: theme.palette.background.paper,
-            border: "2px solid #000",
-            boxShadow: theme.shadows[5],
-            padding: theme.spacing(2, 4, 3),
-          },
+        const useStyles = makeStyles(() => ({
           modal: {
             display: "flex",
             alignItems: "center",
@@ -90,7 +82,7 @@ export default function DataTable({ users, setUsers}) {
               aria-labelledby="simple-modal-title"
               aria-describedby="simple-modal-description"
             >
-              <div className={classes.paper}>
+              <div className="paper">
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
@@ -116,8 +108,8 @@ export default function DataTable({ users, setUsers}) {
   ];
 
   return (
-    <div style={{ height: 275, width: "100%" }}>
-      <DataGrid
+    <div style={{ height: 400, width: "100%" }}>
+      <DataGrid className="fontChange"
         rows={users}
         columns={columns}
         pageSize={5}
