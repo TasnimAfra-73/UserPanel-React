@@ -8,18 +8,21 @@ export default function AddForm({ users, setUsers, handleClose }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
-    let tempUsers = [...users];
-    let userObject = {
-      id: users.length + 1,
-      lastName: lastName,
-      firstName: firstName,
-      email: email,
-    };
-    tempUsers.push(userObject);
-    localStorage.setItem("users", JSON.stringify(tempUsers));
-    setUsers(tempUsers);
-    event.target.reset();
+    if (firstName === "" || lastName === "" || email === "") {
+      alert("Fields cannot be empty");
+    } else {
+      let tempUsers = [...users];
+      let userObject = {
+        id: users.length + 1,
+        lastName: lastName,
+        firstName: firstName,
+        email: email,
+      };
+      tempUsers.push(userObject);
+      localStorage.setItem("users", JSON.stringify(tempUsers));
+      setUsers(tempUsers);
+      event.target.reset();
+    }
   };
 
   return (
@@ -69,7 +72,10 @@ export default function AddForm({ users, setUsers, handleClose }) {
         />
       </div>
       <div className="formBtnPos">
-        <button style={{ backgroundColor: "green", marginRight: "5px"}} type="submit">
+        <button
+          style={{ backgroundColor: "green", marginRight: "5px" }}
+          type="submit"
+        >
           Save
         </button>
         <button style={{ backgroundColor: "red" }} onClick={handleClose}>
